@@ -4,7 +4,10 @@
       <div>
         <el-row>
           <el-col :span="3">
-            <h1>我小叮当、</h1>
+            <h1>{{$t("lang.login.title")}}</h1>
+          </el-col>
+          <el-col :span="3" style="bottom:0px">
+            <a href="#" @click="changeLangEvent">{{$t("lang.login.language")}}</a>
           </el-col>
         </el-row>
       </div>
@@ -14,24 +17,36 @@
       <el-form :model="loginForm" label-width="100px">
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="用户名：">
-              <el-input v-model="loginForm.username" placeholder="请输入用户名" type="text"></el-input>
+            <el-form-item :label="$t('lang.login.usernameLabel')">
+              <el-input
+                v-model="loginForm.username"
+                :placeholder="$t('lang.login.usernameInput')"
+                type="text"
+              ></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="密码：">
-              <el-input v-model="loginForm.password" placeholder="请输入密码" type="password"></el-input>
+            <el-form-item :label="$t('lang.login.passwordLabel')">
+              <el-input
+                v-model="loginForm.password"
+                :placeholder="$t('lang.login.passwordInput')"
+                type="password"
+              ></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="4">
-            <el-button size="mini" type="primary" @click="loginFormSubmit">我要进入。。。</el-button>
+            <el-button
+              size="mini"
+              type="primary"
+              @click="loginFormSubmit"
+            >{{$t("lang.login.loginButton")}}</el-button>
           </el-col>
           <el-col :span="2">
-            <router-link :to="{name: 'register'}">免费注册</router-link>
+            <router-link :to="{name: 'register'}">{{$t("lang.login.registerButton")}}</router-link>
           </el-col>
         </el-row>
       </el-form>
@@ -72,6 +87,15 @@ export default {
         .catch(res => {
           this.$message({ type: "error", message: "未知错误！==>" + res });
         });
+    },
+    changeLangEvent() {
+      if (this.lang === "zh-CN") {
+        this.lang = "en-US";
+        this.$i18n.locale = this.lang; //关键语句
+      } else {
+        this.lang = "zh-CN";
+        this.$i18n.locale = this.lang; //关键语句
+      }
     }
   }
 };

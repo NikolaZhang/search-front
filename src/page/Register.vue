@@ -4,34 +4,34 @@
     <div class="position-center-left">
         <div>
         <el-row>
-          <el-col :span="3"><h1>我小叮当、</h1></el-col>
+          <el-col :span="3"><h1>{{$t("lang.register.title")}}</h1></el-col>
         </el-row>
       </div>
-      <el-form :model="registerForm" label-width="100px">
+      <el-form :model="registerForm" label-width="150px">
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="用户名：">
-              <el-input v-model="registerForm.username" placeholder="请输入用户名" type="text"></el-input>
+            <el-form-item :label='$t("lang.register.usernameLabel")'>
+              <el-input v-model="registerForm.username" :placeholder='$t("lang.register.usernameInput")' type="text"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="密码：">
-              <el-input v-model="registerForm.password" placeholder="请输入密码" type="password"></el-input>
+            <el-form-item :label='$t("lang.register.passwordLabel")'>
+              <el-input v-model="registerForm.password" :placeholder="$t('lang.register.passwordInput')" type="password"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="确认密码：">
-              <el-input v-model="registerForm.passwordConfirm" placeholder="请再次确认密码" type="password"></el-input>
+            <el-form-item :label='$t("lang.register.passwordConfirmLabel")'>
+              <el-input v-model="registerForm.passwordConfirm" :placeholder="$t('lang.register.passwordConfirmInput')" type="password"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="4">
-            <el-button size="mini" type="primary" @click="registerFormSubmit">注册</el-button>
+            <el-button size="mini" type="primary" @click="registerFormSubmit">{{$t("lang.register.registerButton")}}</el-button>
           </el-col>
         </el-row>
       </el-form>
