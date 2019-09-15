@@ -65,7 +65,7 @@ export default {
           });
         })
         .catch(res => {
-          this.$message({ type: "error", message: "未知错误！==>" + res });
+          this.$message({ type: "error", message:  res });
         });
     }
   }

@@ -46,7 +46,7 @@
             >{{$t("lang.login.loginButton")}}</el-button>
           </el-col>
           <el-col :span="2">
-            <router-link :to="{name: 'register'}">{{$t("lang.login.registerButton")}}</router-link>
+            <router-link :to="{path: '/register'}">{{$t("lang.login.registerButton")}}</router-link>
           </el-col>
         </el-row>
       </el-form>
@@ -75,7 +75,7 @@ export default {
         )
         .then(res => {
           if (res.data.success) {
-            localStorage.setItem("isLogin", JSON.stringify(true));
+            localStorage.setItem("isLogin", true);
             this.$router.push({ path: "/home" });
           } else {
             this.$message({
@@ -96,6 +96,7 @@ export default {
         this.lang = "zh-CN";
         this.$i18n.locale = this.lang; //关键语句
       }
+      this.$http.get("/api/sys/user/language?lang=" + this.lang);
     }
   }
 };
