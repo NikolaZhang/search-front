@@ -10,9 +10,7 @@
         </el-aside>
         <el-container>
           <el-main>
-            <transition name="move" mode="out-in">
-              <router-view />
-            </transition>
+            <router-view />
           </el-main>
           <el-footer>Footer</el-footer>
         </el-container>
